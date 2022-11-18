@@ -8,6 +8,49 @@ class RecipeView extends View {
   _errorMessage = 'We could not find that recipe, Please try another one';
   _message = '';
 
+  _window = document.querySelector('.recipe');
+  _overlay = document.querySelector('.overlay');
+  // _btnOpen = document.querySelector('.nav__btn--add-recipe');
+  _btnClose = document.querySelector('.btn--close-modal');
+
+  constructor() {
+    super();
+    this._addHandlerHideWindow();
+  }
+
+  _addHandlerHideWindow() {
+    this._btnClose.addEventListener('click', this._addHidden.bind(this));
+    this._overlay.addEventListener('click', this._addHidden.bind(this));
+  }
+
+  _addHidden() {
+    this._overlay.classList.add('hidden');
+    this._window.classList.add('hidden');
+    this._btnClose.classList.add('hidden');
+  }
+
+  togglehidden() {
+    if (
+      this._overlay.classList.contains('hidden') &&
+      this._window.classList.contains('hidden') &&
+      this._btnClose.classList.contains('hidden')
+    ) {
+      this._overlay.classList.remove('hidden');
+      this._window.classList.remove('hidden');
+      this._btnClose.classList.remove('hidden');
+    } else {
+      this._addHidden();
+    }
+  }
+
+  // _check() {
+  //   if (window.location.hash.length > 0) {
+  //     console.log('greater');
+  //     this._overlay.classList.remove('hidden');
+  //     this._window.classList.remove('hidden');
+  //   }
+  // }
+
   _generateSearchExamples() {
     return `
     <p>Search for keywords like ${this._data[0]} </p>
@@ -16,6 +59,7 @@ class RecipeView extends View {
 
   _generateMarkup() {
     return `
+    
     <figure class="recipe__fig">
     <img src="${this._data.image}" alt="${
       this._data.title

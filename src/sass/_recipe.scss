@@ -1,6 +1,26 @@
 .recipe {
   background-color: $color-grey-light-1;
+ @media only screen and (max-width: $bp-small) {
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vh;
+  height: 80vh;
+  background-color: white;
+  border-radius: 9px;
+  overflow-y:scroll;
 
+  padding: 5rem 6rem;
+  box-shadow: 0 4rem 6rem rgba(46, 34, 34, 0.25);
+  z-index: 500;
+  transition: all 0.5s;
+
+ }
+
+ @media only screen and (max-width: $bp-small) {
+  
+ }
   ///////////
   // FIGURE
   &__fig {
@@ -17,11 +37,11 @@
       position: absolute;
       top: 0;
       left: 0;
-      background-image: linear-gradient(
-        to right bottom,
-        $color-grad-1,
-        $color-grad-2
-      );
+      // background-image: linear-gradient(
+      //   to right bottom,
+      //   $color-grad-1,
+      //   $color-grad-2
+      // );
       opacity: 0.6;
     }
   }
@@ -175,5 +195,44 @@
 
   &__publisher {
     font-weight: 700;
+  }
+}
+
+@media only screen and (max-width: $bp-small) {
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    transition: all 0.5s;
+  }
+  
+  .hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .btn--close-modal {
+    color: #fff;
+    position: fixed;
+    top: 5%;
+    left: 45%;
+    font-family: inherit;
+    border-radius: 50px;
+    width: 45px;
+    z-index: 1000;
+    font-size: 3.5rem;
+    cursor: pointer;
+    border: none;
+    // background: red;
+    background-image: linear-gradient(
+        to right bottom,
+        $color-grad-1,
+        $color-grad-2
+      );
   }
 }
