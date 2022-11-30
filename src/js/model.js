@@ -15,28 +15,147 @@ export const state = {
     results: [],
     page: 1,
     resultsPerPage: RESULT_PER_PAGE,
+    totalPages: 0,
   },
   bookmarks: [],
 };
 
 export const searchExamples = [
-  'Apple',
-  'Orange',
-  'Beetroot',
-  'Watermelon',
-  'Pizza',
-  'Chicken',
-  'Dips',
-  'Mango',
+  'carrot',
+  'broccoli',
+  'asparagus',
+  'cauliflower',
+  'corn',
+  'cucumber',
+  'green pepper',
+  'lettuce',
+  'mushrooms',
+  'onion',
+  'potato',
+  'pumpkin',
+  'red pepper',
+  'tomato',
+  'beetroot',
+  'brussel sprouts',
+  'peas',
+  'zucchini',
+  'radish',
+  'sweet potato',
+  'artichoke',
+  'leek',
+  'cabbage',
+  'celery',
+  'chili',
+  'garlic',
+  'basil',
+  'coriander',
+  'parsley',
+  'dill',
+  'rosemary',
+  'oregano',
+  'cinnamon',
+  'saffron',
+  'green bean',
+  'bean',
+  'chickpea',
+  'lentil',
+  'apple',
+  'apricot',
+  'avocado',
+  'banana',
+  'blackberry',
+  'blackcurrant',
+  'blueberry',
+  'boysenberry',
+  'cherry',
+  'coconut',
+  'fig',
+  'grape',
+  'grapefruit',
+  'kiwifruit',
+  'lemon',
+  'lime',
+  'lychee',
+  'mandarin',
+  'mango',
+  'melon',
+  'nectarine',
+  'orange',
+  'papaya',
+  'passion fruit',
+  'peach',
+  'pear',
+  'pineapple',
+  'plum',
+  'pomegranate',
+  'quince',
+  'raspberry',
+  'strawberry',
+  'watermelon',
+  'salad',
+  'pizza',
+  'pasta',
+  'popcorn',
+  'lobster',
+  'steak',
+  'bbq',
+  'pudding',
+  'hamburger',
+  'pie',
+  'cake',
+  'sausage',
+  'tacos',
+  'kebab',
+  'poutine',
+  'seafood',
+  'chips',
+  'fries',
+  'masala',
+  'paella',
+  'som tam',
+  'chicken',
+  'toast',
+  'marzipan',
+  'tofu',
+  'ketchup',
+  'hummus',
+  'chili',
+  'maple syrup',
+  'parma ham',
+  'fajitas',
+  'champ',
+  'lasagna',
+  'poke',
+  'chocolate',
+  'croissant',
+  'arepas',
+  'bunny chow',
+  'pierogi',
+  'donuts',
+  'rendang',
+  'sushi',
+  'ice cream',
+  'duck',
+  'curry',
+  'beef',
+  'goat',
+  'lamb',
+  'turkey',
+  'pork',
+  'fish',
+  'crab',
+  'bacon',
+  'ham',
+  'pepperoni',
+  'salami',
+  'ribs',
 ];
 
-export const search = function () {
-  searchExamples.map((examples, index, arr) => {
-    const randomItem = Math.floor(Math.random() * searchExamples.length);
-    console.log(randomItem);
-    console.log(arr[randomItem]);
-    // if (examples == randomItem) return examples;
-  });
+export const makeRandomExamples = function (x) {
+  const shuffledArray = searchExamples.sort(() => 0.5 - Math.random());
+  const results = shuffledArray.slice(0, x);
+
+  return results;
 };
 
 const quantityUpdate = function (servings) {
@@ -163,6 +282,11 @@ export const getSearchResultsPerpage = function (page = state.search.page) {
   const starter = (page - 1) * state.search.resultsPerPage;
   const end = page * state.search.resultsPerPage;
 
+  state.search.totalPages = Math.ceil(
+    state.search.results.length / state.search.resultsPerPage
+  );
+
+
   return state.search.results.slice(starter, end);
 };
 
@@ -217,7 +341,6 @@ const clearBookmarks = function () {
 };
 
 // clearBookmarks()
-console.log(state.bookmarks);
 
 export const uploadRecipe = async function (newRecipe) {
   try {

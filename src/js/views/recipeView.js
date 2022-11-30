@@ -51,11 +51,7 @@ class RecipeView extends View {
   //   }
   // }
 
-  _generateSearchExamples() {
-    return `
-    <p>Search for keywords like ${this._data[0]} </p>
-    `;
-  }
+  
 
   _generateMarkup() {
     return `
@@ -70,15 +66,7 @@ class RecipeView extends View {
   </figure>
 
   <div class="recipe__details">
-    <div class="recipe__info">
-      <svg class="recipe__info-icon">
-        <use href="${icons}#icon-clock"></use>
-      </svg>
-      <span class="recipe__info-data recipe__info-data--minutes">${
-        this._data.cookingTIme
-      }</span>
-      <span class="recipe__info-text">minutes</span>
-    </div>
+
     <div class="recipe__info">
       <svg class="recipe__info-icon">
         <use href="${icons}#icon-users"></use>
@@ -183,9 +171,9 @@ class RecipeView extends View {
       window.addEventListener(ev, controller);
     });
   }
-  // addSearcExamples(handler) {
-  //   window.addEventListener('load', handler);
-  // }
+  addSearcExamples(handler) {
+    window.addEventListener('load', handler);
+  }
 
   addHandlerControlBookmarks(handler) {
     this._parentElement.addEventListener('click', function (e) {

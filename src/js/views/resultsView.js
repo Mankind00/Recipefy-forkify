@@ -4,8 +4,15 @@ import icons from 'url:../../img/icons.svg'; // Parcel 2
 
 class ResultsView extends View {
   _parentElement = document.querySelector('.results');
+  _messageElement = this._parentElement.querySelector('.message');
   _errorMessage = 'No recipes found for your query! Please try again ;)';
   _message = '';
+
+  _generateSearchExamples() {
+    return `
+    <p>Search for keywords like ${this._data.join(', ')} </p>
+    `;
+  }
 
   _generateMarkup() {
     // console.log(this._data);
@@ -16,7 +23,6 @@ class ResultsView extends View {
     const id = window.location.hash.slice(1);
 
     // console.log(id);
-    console.log(result.image_url);
     return `
       <li class="preview">
         <a class="preview__link ${

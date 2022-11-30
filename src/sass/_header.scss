@@ -49,7 +49,7 @@
     }
 
     @media only screen and (max-width: $bp-medium) {
-      width: auto;
+      width: 10rem;
 
       &::placeholder {
         color: white;
@@ -58,9 +58,12 @@
   }
 
   &__btn {
-    font-weight: 600;
+    font-weight: 4000;
     font-family: inherit;
+    
   }
+
+  
 }
 
 .nav {
@@ -109,6 +112,12 @@
       background-color: $color-grey-light-2;
     }
   }
+}
+
+  @media only screen and (max-width: $bp-small) {
+    .btn span {
+      display: none;
+    }
 }
 
 .bookmarks {

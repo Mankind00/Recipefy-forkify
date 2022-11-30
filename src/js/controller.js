@@ -11,7 +11,7 @@ import bookmarksView from './views/bookmarksView.js';
 import paginationView from './views/paginationView.js';
 import addRecipeView from './views/addRecipeView';
 // import { fc } from 'fraction-calculator';
-console.log(model.searchExamples);
+// console.log(model.makeRandomExamples(20));
 
 // if (module.hot) {
 //   module.hot.accept();
@@ -32,16 +32,11 @@ const controlRecipes = async function () {
 
     // load Recipe
     await model.loadRecipe(id);
-    // const { recipe } = model.state;
 
     // render recipe
     recipeView.render(model.state.recipe);
     recipeView.togglehidden();
-    // console.log(model.state.recipe);
-    // model.updateServings();
-    // controlServings();
-    // recipeContainer.innerHTML = ' ';
-    // recipeContainer.insertAdjacentHTML('afterbegin', markUp);
+
     bookmarksView.update(model.state.bookmarks);
   } catch (err) {
     console.log(err);
@@ -50,8 +45,8 @@ const controlRecipes = async function () {
 };
 
 const contolSearchExamples = function () {
-  recipeView.renderExamples(model.search());
-  console.log('called');
+  resultsView.renderExamples(model.makeRandomExamples(20));
+  // console.log(model.makeRandomExamples(20).join(", "));
 };
 
 const controlSearchResults = async function () {
@@ -64,10 +59,6 @@ const controlSearchResults = async function () {
 
     await model.loadSearchResults(query);
 
-    // console.log(model.state.search.results);
-    // console.log(model.state.search.results);
-    // model.state.search.page = 1;
-    // resultsView.render(model.state.search.results);
     resultsView.render(model.getSearchResultsPerpage());
 
     paginationView.render(model.state.search);
@@ -124,7 +115,7 @@ const init = function () {
   recipeView.addHandlerControlBookmarks(controlAddBookmark);
   searchView.addHandler(controlSearchResults);
   paginationView.addHandler(controlPagination);
-  // recipeView.addSearcExamples(contolSearchExamples);
+  recipeView.addSearcExamples(contolSearchExamples);
   // addRecipeView.addHandlerUpload(controlAddRecipe);
 };
 

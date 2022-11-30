@@ -18,11 +18,11 @@ export default class View {
     // console.log(this._parentElement);
   }
 
-  // renderExamples(data) {
-  //   this._data = data;
-  //   const exampleMarkUp = this._generateSearchExamples();
-  //   this._messageElement.insertAdjacentHTML('beforeend', exampleMarkUp);
-  // }
+  renderExamples(data) {
+    this._data = data;
+    const exampleMarkUp = this._generateSearchExamples();
+    this._messageElement.insertAdjacentHTML('afterbegin', exampleMarkUp);
+  }
 
   update(data) {
     this._data = data;
